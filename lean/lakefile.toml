@@ -1,0 +1,5 @@
+name = "SchurSix538"
+defaultTargets = ["SchurSix538"]
+
+[[lean_lib]]
+name = "SchurSix538"

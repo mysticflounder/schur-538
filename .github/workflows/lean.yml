@@ -1,0 +1,33 @@
+name: Lean
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and print axioms
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          lake-package-directory: lean
+      - name: Compare the numeral in the Lean file with the word file
+        run: |
+          grep -o 'def word538 : Nat := [0-9]*' lean/SchurSix538.lean | awk '{print $NF}' | cmp - schur6-538.word
+      - name: Check the axioms of the main theorem
+        working-directory: lean
+        run: |
+          lake env lean SchurSix538.lean > axioms.txt
+          cat axioms.txt
+          if grep -q sorryAx axioms.txt; then exit 1; fi
+          grep -qF "'SchurWitness538.schur_six_538' depends on axioms: [propext, Classical.choice, Quot.sound]" axioms.txt
