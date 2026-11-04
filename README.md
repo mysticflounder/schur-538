@@ -14,6 +14,7 @@ theorem schur_six_538 :
 |---|---|
 | `lean/SchurSix538.lean` | The theorem and its proof. Imports Lean core only. |
 | `schur6-538.word` | The colouring: letter i is the colour of the integer i. 538 letters and one final newline. |
+| `schur6-538-b.word` | A second colouring in the same format. The Lean theorem does not use this word. |
 
 ## Check it
 
