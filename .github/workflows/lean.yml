@@ -30,4 +30,4 @@ jobs:
           lake env lean SchurSix538.lean > axioms.txt
           cat axioms.txt
           if grep -q sorryAx axioms.txt; then exit 1; fi
-          grep -qF "'SchurWitness538.schur_six_538' depends on axioms: [propext, Classical.choice, Quot.sound]" axioms.txt
+          grep -qF "'SchurWitness538.schur_six_538' depends on axioms: [propext, Quot.sound]" axioms.txt

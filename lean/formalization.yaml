@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "A Schur 6-colouring of [1, 538]"
+  description: >-
+    A Lean 4 check, with Lean core only, of the existence of a colouring of the
+    integers 1 to 538 with 6 colours and no monochromatic x + y = z, with x = y
+    allowed. So the integers 1 to 538 are the union of six sum-free sets, which
+    gives S(6) ≥ 538 for the Schur number S(6). The largest lower bound in the
+    sources that the author read on 3 November 2026 is S(6) ≥ 537, by Chen, Zhu
+    and Long. The paper paper/schur-six-538.md in this repository states the
+    result.
+  authors:
+    - "Adam McKenna"
+  responsible_maintainers:
+    - "Adam McKenna"
+  license: "CC-BY-4.0"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05D10", "11B75"]
+
+sources:
+  - title: "The sixth Schur number is at least 538 (preprint; paper/schur-six-538.md in this repository)"
+    authors: ["Adam McKenna"]
+    type: original-proof
+    relationship: other
+    note: >-
+      The paper and this formalization are the first presentation of this
+      partition of the integers 1 to 538. The word of the colouring is
+      schur6-538.word. The paper is a preprint, without peer review.
+  - title: "A new lower bound for the sixth Schur number: S(6) ≥ 537"
+    authors: ["Zhiyang Chen", "Ligeng Zhu", "Fan Long"]
+    id: "https://arxiv.org/abs/2610.31362v1"
+    type: paper
+    relationship: background
+    note: "The previous lower bound, S(6) ≥ 537. The formalization does not use it."
+  - title: "Symmetric sum-free partitions and lower bounds for Schur numbers"
+    authors: ["Harold Fredricksen", "Melvin M. Sweet"]
+    id: "https://doi.org/10.37236/1510"
+    type: paper
+    relationship: background
+    note: "Electron. J. Combin. 7 (2000), #R32. The earlier lower bound, S(6) ≥ 536."
+
+related_formalizations: []
+
+status:
+  scope: >-
+    One theorem is compared (lean/comparator.json): schur_six_538. The file does
+    not define the Schur number S(k) or the Ramsey number R_k(3). So the step
+    from the partition to S(6) ≥ 538 is outside Lean, and Corollary 2 of the
+    paper, R_6(3) ≥ 540, is not formalized.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Quot.sound"]
+
+automation:
+  methods:
+    - method: agent
+      models: ["claude-opus-5-5"]
+      framework: "Claude Code"
+      tool_setup: >-
+        The AI system Claude (Anthropic; model Claude Opus 5.5) produced the
+        computer checks, the Lean formalization and the paper under the direction
+        of the author. A separate agent of the same model audited the word and the
+        Lean theorem with its own code.
+    - method: other
+      models: ["claude-fable-5-1", "claude-haiku-5-5", "claude-opus-5-5", "gpt-6.1-terra", "gpt-5.6-sol"]
+      tool_setup: >-
+        The word was found by a computer program whose development the author
+        directed. These AI models wrote the program.
+  notes: >-
+    The author directed the work, has checked the content and takes
+    responsibility for it.
+
+fidelity:
+  divergences: >-
+    The colouring has the type Nat → Fin 6 and is defined on all natural numbers;
+    only its values on 1 to 538 matter. The statement alone does not say that each
+    of the six colours is used. For the witness in the file, the colour plus one
+    of x is letter x of the word (colouring538_val), and each of the six colours
+    is used. The pairs x, y are unordered in the paper and ordered in Lean, and
+    this makes no difference to the condition.
+
+review:
+  status: "agent-reviewed"
+  reviewers: []
+  notes: >-
+    The Lean kernel checks the proof, by kernel reduction of a Bool checker, with
+    no native code. A separate agent of the same model audited the word and the
+    Lean theorem at an earlier toolchain, and another agent of the same model
+    reviewed the paper. The author has checked the content and takes
+    responsibility for it. No human peer review.

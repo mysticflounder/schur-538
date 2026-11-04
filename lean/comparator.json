@@ -1,0 +1,13 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "SchurSix538",
+  "enable_nanoda": true,
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "theorem_names": [
+    "SchurWitness538.schur_six_538"
+  ]
+}

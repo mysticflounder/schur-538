@@ -3,3 +3,8 @@ defaultTargets = ["SchurSix538"]
 
 [[lean_lib]]
 name = "SchurSix538"
+
+# The statement alone, with sorry, for the comparator. Build it with
+#   lake build Challenge
+[[lean_lib]]
+name = "Challenge"

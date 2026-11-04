@@ -4,6 +4,7 @@ Released under the Creative Commons Attribution 4.0 International license
 (CC-BY-4.0) as described in the file LICENSE.
 Authors: Adam McKenna
 -/
+module
 
 /-!
 # A Schur 6-colouring of `[1, 538]`
@@ -170,7 +171,7 @@ theorem colouring538_no_mono (x y : Nat) (hx : 1 ≤ x) (hy : 1 ≤ y) (hxy : x 
 /-- **Main theorem.** There is a colouring of the natural numbers with 6 colours
 such that no `x`, `y`, `x + y` in `[1, 538]` have one colour. The case `x = y` is
 included. The statement uses no definition of this file. -/
-theorem schur_six_538 :
+public theorem schur_six_538 :
     ∃ c : Nat → Fin 6, ∀ x y : Nat, 1 ≤ x → 1 ≤ y → x + y ≤ 538 →
       ¬ (c x = c y ∧ c y = c (x + y)) :=
   ⟨colouring538, colouring538_no_mono⟩
