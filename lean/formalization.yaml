@@ -24,6 +24,7 @@ classification:
 sources:
   - title: "The sixth Schur number is at least 538 (preprint; paper/schur-six-538.md in this repository)"
     authors: ["Adam McKenna"]
+    id: "https://doi.org/10.5281/zenodo.23937655"
     type: original-proof
     relationship: other
     note: >-

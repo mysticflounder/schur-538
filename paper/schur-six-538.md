@@ -2,7 +2,7 @@
 title: "The sixth Schur number is at least 538"
 title-meta: "The sixth Schur number is at least 538"
 author: Adam McKenna
-date: "November 2026"
+date: "November 2026. doi:10.5281/zenodo.23937655"
 monofont: "Menlo"
 monofontoptions: "Scale=0.85"
 abstract: |

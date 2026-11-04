@@ -8,6 +8,8 @@ theorem schur_six_538 :
       ¬ (c x = c y ∧ c y = c (x + y))
 ```
 
+To cite this work, use the DOI [10.5281/zenodo.23937655](https://doi.org/10.5281/zenodo.23937655) or `CITATION.cff`.
+
 ## Files
 
 | File | Content |
