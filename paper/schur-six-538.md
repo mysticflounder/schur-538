@@ -9,7 +9,9 @@ abstract: |
   We give an explicit partition of $\{1,\dots,538\}$ into six sum-free sets.
   This shows $S(6)\ge 538$ and improves the bound $S(6)\ge 537$ of Chen, Zhu
   and Long. It also gives $R_6(3)\ge 540$ for the Ramsey number of the triangle
-  in six colours. The partition is checked directly and in Lean 4.
+  in six colours, and known recursive constructions give $S(8)\ge 5382$,
+  $S(11)\ge 204588$ and $S(13)\ge 2045882$. The partition of $\{1,\dots,538\}$ is
+  checked directly and in Lean 4.
 ---
 
 # 1. The result
@@ -60,6 +62,18 @@ possible, because $C_i$ is sum-free. So this colouring with six colours has no
 monochromatic triangle, and neither has its restriction to fewer vertices. So
 $R_6(3)>539$. $\square$
 
+Corollary 2 improves the bound $R_6(3)\ge 539$ of [CZL26].
+
+**Corollary 3.** $S(8)\ge 5382$, $S(11)\ge 204588$ and $S(13)\ge 2045882$.
+
+*Proof.* We use the recurrences $S(k+2)\ge 10\,S(k)+2$ [BBG26, Section IV] and
+$S(k+5)\ge 380\,S(k)+148$ [ACP22, inequality (6)]. With Theorem 1 they give
+$$S(8)\ge 10\cdot 538+2=5382,\qquad S(11)\ge 380\cdot 538+148=204588,$$
+$$S(13)\ge 10\cdot 204588+2=2045882. \qquad\square$$
+
+These improve the bounds $5372$, $204208$ and $2042082$ of [CZL26], which come from
+the same recurrences applied to $S(6)\ge 537$.
+
 # 2. Checks
 
 The following Python program holds the only computation that Theorem 1 needs.
@@ -75,7 +89,7 @@ print(len(W), sorted(set(W)), bad)
 ```
 
 The existence of the partition is also checked in Lean 4, version v4.35.0-rc3.
-The Lean file imports Lean core only and states, in the namespace
+The file `lean/SchurSix538.lean` imports Lean core only and states, in the namespace
 `SchurWitness538`:
 
 ```lean
@@ -88,21 +102,35 @@ For the witness in the file, $c(n)+1$ is letter $n$ of $W$ for
 $1\le n\le 538$ (theorem `colouring538_val`). So the sets
 $\{n\in\{1,\dots,538\}: c(n)=i\}$, for $i$ in `Fin 6`, are the sets $C_{i+1}$ of
 Theorem 1. Lean does not define $S(k)$ or $R_k(3)$: the step from the partition
-to $S(6)\ge 538$ is the definition of $S(6)$, and Corollary 2 is not formalized.
-The theorem uses the axioms `propext` and `Quot.sound`. The file has no `sorry`
-and does not use `native_decide`.
+to $S(6)\ge 538$ is the definition of $S(6)$, and Corollaries 2 and 3 are not
+formalized. The theorem uses the axioms `propext` and `Quot.sound`. This file has
+no `sorry` and does not use `native_decide`. The file `lean/Challenge.lean` states
+the same theorem with `sorry` on purpose, for the comparator of the Lean package;
+the proof does not use it.
+
+Corollary 3 rests on two preprints, but its three partitions are also checked
+directly, and this check uses only the tables of those preprints. The program
+`check_recursive_bounds.py` in the repository applies [BBG26, Table II] to $W$
+(8 sets, $\{1,\dots,5382\}$), [ACP22, Table 7] to $W$ (11 sets,
+$\{1,\dots,204588\}$), and [BBG26, Table II] to the partition with 11 sets
+(13 sets, $\{1,\dots,2045882\}$). It finds that each set is sum-free.
 
 # 3. Data availability
 
-The word and the Lean package are at
+The word, the Lean package and the program `check_recursive_bounds.py` are at
 <https://github.com/mysticflounder/schur-538>, under the license CC BY 4.0. The
-file `schur6-538.word` has the letters of $W$ and one final newline. Its SHA-256 is
+file `schur6-538.word` has the letters of $W$ and one final newline, which must be
+removed to get the output stated in Section 2. Its SHA-256 is
 
 `9e149c007b778655afd199685ebcc76260604a44f4c322d8aa9a1d96afb71d20`,
 
-and the SHA-256 of `lean/SchurSix538.lean` is
+the SHA-256 of `lean/SchurSix538.lean` is
 
-`ef4fa1757ff30ed191f7eb1af24af288ab0a67726ee52b108355402789a63b81`.
+`ef4fa1757ff30ed191f7eb1af24af288ab0a67726ee52b108355402789a63b81`,
+
+and the SHA-256 of `check_recursive_bounds.py` is
+
+`aa7620b4dceb9788fa2a1babca998b01f2bcf266ac1fc9aaeda896397f25ff0c`.
 
 The repository also holds a second such word, `schur6-538-b.word`, which differs
 from $W$ in 37 letters. The Lean theorem does not use it.
@@ -112,12 +140,19 @@ from $W$ in 37 letters. The Lean theorem does not use it.
 The word was found by a computer program whose development the author directed.
 AI models (Anthropic Claude and OpenAI GPT models) wrote the program. The computer
 checks, the Lean formalization and this note were produced with the AI system
-Claude (Anthropic; model Claude Opus 5.5) under the direction of the author. A
-separate agent of the same model audited the word and the Lean theorem with its
-own code. The author has checked the content and takes responsibility for it.
+Claude (Anthropic; model Claude Opus 5.5) under the direction of the author.
+Separate agents of the same model audited the word, the Lean theorem and the
+partitions of Corollary 3 with their own code. The author has checked the content
+and takes responsibility for it.
 
 # References
 
+- [ACP22] R. Ageron, P. Casteras, T. Pellerin, Y. Portella, A. Rimmel,
+  J. Tomasik, New lower bounds for Schur and weak Schur numbers, preprint,
+  arXiv:2112.03175v2 (2022).
+- [BBG26] N. Bengone, A. Brouk, M. Grinsztajn, T. Helbert, B. Lugherini,
+  A. Rimmel, J. Tomasik, Shifted S-templates and improved lower bounds for Schur
+  numbers, preprint, arXiv:2607.15034v1 (2026).
 - [CZL26] Z. Chen, L. Zhu, F. Long, A new lower bound for the sixth Schur
   number: $S(6)\ge 537$, preprint, arXiv:2610.31362v1 (2026).
 - [FS00] H. Fredricksen, M. M. Sweet, Symmetric sum-free partitions and
