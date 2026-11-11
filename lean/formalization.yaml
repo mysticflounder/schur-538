@@ -50,8 +50,9 @@ status:
   scope: >-
     One theorem is compared (lean/comparator.json): schur_six_538. The file does
     not define the Schur number S(k) or the Ramsey number R_k(3). So the step
-    from the partition to S(6) ≥ 538 is outside Lean, and Corollary 2 of the
-    paper, R_6(3) ≥ 540, is not formalized.
+    from the partition to S(6) ≥ 538 is outside Lean, and Corollaries 2 and 3 of
+    the paper, R_6(3) ≥ 540 and the bounds on S(8), S(11) and S(13), are not
+    formalized.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: ["propext", "Quot.sound"]
@@ -64,8 +65,8 @@ automation:
       tool_setup: >-
         The AI system Claude (Anthropic; model Claude Opus 5.5) produced the
         computer checks, the Lean formalization and the paper under the direction
-        of the author. A separate agent of the same model audited the word and the
-        Lean theorem with its own code.
+        of the author. Separate agents of the same model audited the word, the
+        Lean theorem and the partitions of Corollary 3 with their own code.
     - method: other
       models: ["claude-fable-5-1", "claude-haiku-5-5", "claude-opus-5-5", "gpt-5.6-sol", "gpt-6-astra", "gpt-6.1-sol", "gpt-6.1-terra"]
       tool_setup: >-

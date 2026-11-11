@@ -7,7 +7,7 @@
       "name": "McKenna, Adam"
     }
   ],
-  "description": "We give an explicit partition of {1, ..., 538} into six sum-free sets. This shows S(6) ≥ 538 and improves the bound S(6) ≥ 537 of Chen, Zhu and Long. It also gives R_6(3) ≥ 540 for the Ramsey number of the triangle in six colours, and known recursive constructions give S(8) ≥ 5382, S(11) ≥ 204588 and S(13) ≥ 2045882. The partition is checked directly and in Lean 4. The paper is paper/schur-six-538.pdf in this archive.",
+  "description": "We give an explicit partition of {1, ..., 538} into six sum-free sets. This shows S(6) ≥ 538 and improves the bound S(6) ≥ 537 of Chen, Zhu and Long. It also gives R_6(3) ≥ 540 for the Ramsey number of the triangle in six colours, and known recursive constructions give S(8) ≥ 5382, S(11) ≥ 204588 and S(13) ≥ 2045882. The partition of {1, ..., 538} is checked directly and in Lean 4. The paper is paper/schur-six-538.pdf in this archive.",
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",

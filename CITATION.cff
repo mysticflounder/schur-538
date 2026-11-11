@@ -20,7 +20,7 @@ keywords:
   - Ramsey numbers
   - Lean 4
 preferred-citation:
-  type: article
+  type: unpublished
   title: "The sixth Schur number is at least 538"
   authors:
     - family-names: McKenna

@@ -3,8 +3,7 @@ title: "The sixth Schur number is at least 538"
 title-meta: "The sixth Schur number is at least 538"
 author: Adam McKenna
 date: "November 2026. doi:10.5281/zenodo.23937655"
-monofont: "Menlo"
-monofontoptions: "Scale=0.85"
+geometry: margin=1in
 abstract: |
   We give an explicit partition of $\{1,\dots,538\}$ into six sum-free sets.
   This shows $S(6)\ge 538$ and improves the bound $S(6)\ge 537$ of Chen, Zhu
@@ -22,7 +21,7 @@ the largest $n$ such that $\{1,\dots,n\}$ is the union of $k$ sum-free sets.
 
 Fredricksen and Sweet gave $S(6)\ge 536$ [FS00], and Chen, Zhu and Long gave
 $S(6)\ge 537$ [CZL26]. The latter is the largest lower bound in the sources that
-we read on 3 November 2026.
+we read on 11 November 2026.
 
 **Theorem 1.** $S(6)\ge 538$.
 
@@ -93,13 +92,13 @@ The file `lean/SchurSix538.lean` imports Lean core only and states, in the names
 `SchurWitness538`:
 
 ```lean
-theorem schur_six_538 :
+public theorem schur_six_538 :
     ∃ c : Nat → Fin 6, ∀ x y : Nat, 1 ≤ x → 1 ≤ y → x + y ≤ 538 →
       ¬ (c x = c y ∧ c y = c (x + y))
 ```
 
 For the witness in the file, $c(n)+1$ is letter $n$ of $W$ for
-$1\le n\le 538$ (theorem `colouring538_val`). So the sets
+$1\le n\le 538$ (theorem `colouring538_val`, which is private to the file). So the sets
 $\{n\in\{1,\dots,538\}: c(n)=i\}$, for $i$ in `Fin 6`, are the sets $C_{i+1}$ of
 Theorem 1. Lean does not define $S(k)$ or $R_k(3)$: the step from the partition
 to $S(6)\ge 538$ is the definition of $S(6)$, and Corollaries 2 and 3 are not

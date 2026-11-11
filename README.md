@@ -14,7 +14,7 @@ To cite this work, use the DOI [10.5281/zenodo.23937655](https://doi.org/10.5281
 
 | File | Content |
 |---|---|
-| `paper/schur-six-538.pdf` | The paper. Its source is `paper/schur-six-538.md`. |
+| `paper/schur-six-538.pdf` | The paper. Its source is `paper/schur-six-538.md`; pandoc makes `paper/schur-six-538.tex` from it, and pdfLaTeX makes the PDF from the `.tex` file. |
 | `lean/SchurSix538.lean` | The theorem and its proof. Imports Lean core only. |
 | `lean/Challenge.lean` | The statement alone, with `sorry`, for the comparator. |
 | `lean/comparator.json` | The comparator configuration. |
@@ -30,7 +30,7 @@ cd lean
 lake build
 ```
 
-The toolchain is in `lean/lean-toolchain` (Lean v4.35.0-rc3). The build prints the axioms of each theorem. For `schur_six_538` they are `propext` and `Quot.sound`. The proof file has no `sorry` and no `native_decide`.
+The toolchain is in `lean/lean-toolchain` (Lean v4.35.0-rc3). The build prints the axioms of four theorems, among them `schur_six_538`. For `schur_six_538` they are `propext` and `Quot.sound`. The proof file has no `sorry` and no `native_decide`.
 
 The numeral `word538` in the Lean file has the same digits as `schur6-538.word`. The workflow `.github/workflows/lean.yml` compares them.
 
