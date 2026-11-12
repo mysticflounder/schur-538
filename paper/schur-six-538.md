@@ -18,6 +18,7 @@ abstract: |
 A set $A$ of positive integers is *sum-free* when there are no $x,y\in A$ with
 $x+y\in A$; the elements $x$ and $y$ may be equal. The Schur number $S(k)$ is
 the largest $n$ such that $\{1,\dots,n\}$ is the union of $k$ sum-free sets.
+Schur proved that $S(k)$ is finite [Sch16].
 
 Fredricksen and Sweet gave $S(6)\ge 536$ [FS00], and Chen, Zhu and Long gave
 $S(6)\ge 537$ [CZL26]. The latter is the largest lower bound in the sources that
@@ -61,7 +62,8 @@ possible, because $C_i$ is sum-free. So this colouring with six colours has no
 monochromatic triangle, and neither has its restriction to fewer vertices. So
 $R_6(3)>539$. $\square$
 
-Corollary 2 improves the bound $R_6(3)\ge 539$ of [CZL26].
+Corollary 2 improves the bound $R_6(3)\ge 539$ of [CZL26]. The survey [Rad26,
+Table XIa] lists the earlier bound $R_6(3)\ge 538$ of [FS00].
 
 **Corollary 3.** $S(8)\ge 5382$, $S(11)\ge 204588$ and $S(13)\ge 2045882$.
 
@@ -157,3 +159,7 @@ and takes responsibility for it.
 - [FS00] H. Fredricksen, M. M. Sweet, Symmetric sum-free partitions and
   lower bounds for Schur numbers, Electron. J. Combin. 7 (2000), #R32.
   doi:10.37236/1510.
+- [Rad26] S. P. Radziszowski, Small Ramsey numbers, Electron. J. Combin.,
+  Dynamic Survey DS1, revision 18 (2026). doi:10.37236/21.
+- [Sch16] I. Schur, Über die Kongruenz $x^m+y^m\equiv z^m \pmod p$,
+  Jahresber. Dtsch. Math.-Ver. 25 (1916), 114–117.
